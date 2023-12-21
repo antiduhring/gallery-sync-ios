@@ -9,13 +9,11 @@ import SwiftUI
 
 @main
 struct IOS_SYNCApp: App {
-    let itemsProvider = FilesProvider()
-    let itemsClient = ItemsClient()
+    let filesProvider = FilesProvider()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(itemsProvider)
-                .environmentObject(itemsClient);
+                .environmentObject(filesProvider)
         }
     }
 }

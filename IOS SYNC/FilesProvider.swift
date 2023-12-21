@@ -8,63 +8,50 @@
 import Foundation
 
 class FilesProvider:ObservableObject {
-    var urls: [URL] = []
+    private let filesCache = FilesCache()
+    @Published var files: [URL] = []
     
-    func setUrls(urls: [URL]) {
-        self.urls = urls
+    func clear() {
+        do {
+            try filesCache.clear()
+            self.files = []
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
+    func loadFiles() {
+        do {
+           self.files = try filesCache.getAllFiles()
+       } catch {
+           fatalError(error.localizedDescription)
+       }
+    }
+    
+    func addFiles(files: [URL]) {
+        do {
+            try filesCache.addFiles(files: files)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
     
     func getFiles() -> [URL] {
-        if (urls.isEmpty) {
+        if (files.isEmpty) {
             print("URL NOT SET")
             return []
         }
         
-        return urls.flatMap(getFiles)
+        return files
     }
     
-    func getFiles(url: URL) -> [URL] {
-        guard url.startAccessingSecurityScopedResource() else {
-                // Handle the failure here.
-                return []
-            }
-        
-        defer { url.stopAccessingSecurityScopedResource() }
-        
-        if (!url.hasDirectoryPath) {
-            return [url]
+    func delete(file: URL) {
+        do {
+            try filesCache.deleteFile(file: file)
+            loadFiles()
+        } catch {
+            fatalError(error.localizedDescription)
         }
-            
-        var error: NSError? = nil
-        var result: [URL] = [];
-        NSFileCoordinator().coordinate(readingItemAt: url, error: &error) { (url) in
-            let keys : [URLResourceKey] = [.nameKey, .isDirectoryKey]
-            
-            // Get an enumerator for the directory's content.
-            guard let fileList =
-                    FileManager.default.enumerator(at: url, includingPropertiesForKeys: keys) else {
-                Swift.debugPrint("*** Unable to access the contents of \(url.path) ***\n")
-                return
-            }
-            
-            for case let file as URL in fileList {
-                // Start accessing the content's security-scoped URL.
-                guard file.startAccessingSecurityScopedResource() else {
-                    continue
-                }
-                
-                print("ADD FILE \(file.absoluteString)")
-                result.append(file)
-                
-                // Do something with the file here.
-                Swift.debugPrint("chosen file: \(file.lastPathComponent)")
-                
-                // Make sure you release the security-scoped resource when you finish.
-                file.stopAccessingSecurityScopedResource()
-            }
-        }
-        
-        return result
     }
 }
 

@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		CE5123542B2E57E600950431 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5123532B2E57E600950431 /* Browser.swift */; };
 		CE5123562B2E5D0900950431 /* FilesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5123552B2E5D0900950431 /* FilesProvider.swift */; };
-		CE5123582B2E5D4300950431 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5123572B2E5D4300950431 /* Item.swift */; };
-		CE51235A2B2E621A00950431 /* ItemsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5123592B2E621A00950431 /* ItemsClient.swift */; };
+		CE51235A2B2E621A00950431 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5123592B2E621A00950431 /* HttpClient.swift */; };
 		CE957A152B2D653100781999 /* IOS_SYNCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE957A142B2D653100781999 /* IOS_SYNCApp.swift */; };
 		CE957A172B2D653100781999 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE957A162B2D653100781999 /* ContentView.swift */; };
 		CE957A192B2D653400781999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE957A182B2D653400781999 /* Assets.xcassets */; };
@@ -18,6 +17,7 @@
 		CE957A262B2D653500781999 /* IOS_SYNCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE957A252B2D653500781999 /* IOS_SYNCTests.swift */; };
 		CE957A302B2D653500781999 /* IOS_SYNCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE957A2F2B2D653500781999 /* IOS_SYNCUITests.swift */; };
 		CE957A322B2D653500781999 /* IOS_SYNCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE957A312B2D653500781999 /* IOS_SYNCUITestsLaunchTests.swift */; };
+		CEAC86982B33B58700CFC3EC /* FilesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC86972B33B58700CFC3EC /* FilesCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +40,7 @@
 /* Begin PBXFileReference section */
 		CE5123532B2E57E600950431 /* Browser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
 		CE5123552B2E5D0900950431 /* FilesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesProvider.swift; sourceTree = "<group>"; };
-		CE5123572B2E5D4300950431 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		CE5123592B2E621A00950431 /* ItemsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsClient.swift; sourceTree = "<group>"; };
+		CE5123592B2E621A00950431 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		CE957A112B2D653100781999 /* IOS SYNC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS SYNC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE957A142B2D653100781999 /* IOS_SYNCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_SYNCApp.swift; sourceTree = "<group>"; };
 		CE957A162B2D653100781999 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		CE957A2B2B2D653500781999 /* IOS SYNCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IOS SYNCUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE957A2F2B2D653500781999 /* IOS_SYNCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_SYNCUITests.swift; sourceTree = "<group>"; };
 		CE957A312B2D653500781999 /* IOS_SYNCUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_SYNCUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CEAC86972B33B58700CFC3EC /* FilesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,14 +102,14 @@
 		CE957A132B2D653100781999 /* IOS SYNC */ = {
 			isa = PBXGroup;
 			children = (
+				CEAC86972B33B58700CFC3EC /* FilesCache.swift */,
+				CE5123592B2E621A00950431 /* HttpClient.swift */,
+				CE5123532B2E57E600950431 /* Browser.swift */,
 				CE5123552B2E5D0900950431 /* FilesProvider.swift */,
 				CE957A142B2D653100781999 /* IOS_SYNCApp.swift */,
 				CE957A162B2D653100781999 /* ContentView.swift */,
 				CE957A182B2D653400781999 /* Assets.xcassets */,
 				CE957A1A2B2D653400781999 /* Preview Content */,
-				CE5123532B2E57E600950431 /* Browser.swift */,
-				CE5123572B2E5D4300950431 /* Item.swift */,
-				CE5123592B2E621A00950431 /* ItemsClient.swift */,
 			);
 			path = "IOS SYNC";
 			sourceTree = "<group>";
@@ -269,8 +269,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE5123582B2E5D4300950431 /* Item.swift in Sources */,
-				CE51235A2B2E621A00950431 /* ItemsClient.swift in Sources */,
+				CEAC86982B33B58700CFC3EC /* FilesCache.swift in Sources */,
+				CE51235A2B2E621A00950431 /* HttpClient.swift in Sources */,
 				CE957A172B2D653100781999 /* ContentView.swift in Sources */,
 				CE957A152B2D653100781999 /* IOS_SYNCApp.swift in Sources */,
 				CE5123542B2E57E600950431 /* Browser.swift in Sources */,
